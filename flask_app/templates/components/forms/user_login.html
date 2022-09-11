@@ -1,0 +1,55 @@
+<div class="w-96">
+    <div class="flex flex-col">
+        <div class="flex gap-3 mb-5">
+            <button class="btn-accent hidden" id="show-login-btn">Login</button>
+            <button class="btn-secondary" id="show-register-btn">Register</button>
+        </div>
+        <div class="relative h-96">
+            <img class="h-96 w-full object-cover duration-300 absolute top-0 left-0 rounded shadow z-10 bg-secondary" src="{{ url_for('static', filename='img/family_dinner.jpg') }}" alt="family dinner" id="register-pic">
+            <form class="" id="register-form" action="/user/create" method="post">
+                <h2 class="text-4xl text-center">Register</h2>
+                <div class="mb-3 flex flex-col">
+                    <label for="first_name" class="text-xs text-center">First Name</label>
+                    <input type="text" name="first_name" id="first_name">
+                </div>
+                <div class="mb-3 flex flex-col">
+                    <label for="last_name" class="text-xs text-center">Last Name</label>
+                    <input type="text" name="last_name" id="last_name">
+                </div>
+                <div class="mb-3 flex flex-col">
+                    <label for="email" class="text-xs text-center">Email</label>
+                    <input type="text" name="email" id="email">
+                </div>
+                <div class="mb-3 flex flex-col">
+                    <label for="pw" class="text-xs text-center">Password</label>
+                    <input type="text" name="pw" id="pw">
+                </div>
+                <div class="mb-3 flex flex-col">
+                    <label for="confirm_pw" class="text-xs text-center">Confirm Password</label>
+                    <input type="text" name="confirm_pw" id="confirm_pw">
+                </div>
+                <div class="mb-3 flex justify-center">
+                    <button class="btn-primary">Register</button>
+                </div>
+            </form>
+        </div>
+    
+        <div class="mt-5 h-96 relative">
+            <!-- <img class="w-full h-96 duration-300 absolute top-0 left-0 object-cover rounded shadow hidden opacity-0 z-20" src="{{ url_for('static', filename='img/party.png') }}" alt="party" id="login-pic"> -->
+            <form action="/user/process_login" method="post" id="login-form">
+                <h2 class="text-4xl text-center">Login</h2>
+                <div class="mb-3 flex flex-col">
+                    <label class="text-xs text-center" for="email">Email</label>
+                    <input type="text" name="email" id="email">
+                </div>
+                <div class="mb-3 flex flex-col">
+                    <label class="text-xs text-center" for="pw">Password</label>
+                    <input type="text" name="pw" id="pw">
+                </div>
+                <div class="mb-3 flex justify-center">
+                    <button class="bg-primary">Login</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

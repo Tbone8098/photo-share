@@ -1,0 +1,55 @@
+{% if album %}
+<form class="p-3 w-full" action="/album/{{ album.id }}/update" method="post">
+    <div class="mb-3 flex items-center gap-3">
+        <input class="h-5 w-5" type="checkbox" name="photo_url" id="url_checkbox" checked>
+        <label class="text-xs text-center" for="photo_url">Photo URL</label>
+    </div>
+    <div class="mb-3 flex flex-col hidden" id="file_upload">
+        <label class="text-xs text-center" for="cover_upload">Cover Photo</label>
+        <input type="file" name="cover_upload" id="cover_upload">
+    </div>
+    <div class="mb-3 flex flex-col" id="url_upload">
+        <label class="text-xs text-center" for="cover_url">Cover Photo</label>
+        <input type="text" name="cover_url" id="cover_url" placeholder="URL" value="{{ album.cover_url }}">
+    </div>
+    <div class="mb-3 flex flex-col">
+        <label class="text-xs text-center" for="name">Cover Name</label>
+        <input type="text" name="name" id="name" value="{{ album.name }}">
+    </div>
+    <div class="mb-3 flex justify-end">
+        <button class="btn-secondary">Update Album</button>
+    </div>
+</form>
+
+{% else %}
+
+<div class="mt-5">
+    <h2 class="text-2xl font-my-heading text-center">Create New Album</h2>
+    <form class="p-3" action="/album/create" method="post">
+        <div class="mb-3 flex items-center gap-3">
+            <input class="h-5 w-5" type="checkbox" name="photo_url" id="url_checkbox">
+            <label class="text-xs text-center" for="photo_url">Photo URL</label>
+        </div>
+        <div class="mb-3 flex flex-col" id="file_upload">
+            <label class="text-xs text-center" for="cover_upload">Cover Photo</label>
+            <input type="file" name="cover_upload" id="cover_upload">
+        </div>
+        <div class="mb-3 flex flex-col hidden" id="url_upload">
+            <label class="text-xs text-center" for="cover_url">Cover Photo</label>
+            <input type="text" name="cover_url" id="cover_url" placeholder="URL">
+        </div>
+        <div class="mb-3 flex flex-col">
+            <label class="text-xs text-center" for="name">Cover Name</label>
+            <input type="text" name="name" id="name">
+        </div>
+        <div class="mb-3 flex justify-end">
+            <button class="btn-secondary">Create Album</button>
+        </div>
+    </form>
+</div>
+
+{% endif %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/album_form.js') }}"></script>
+{% endblock js %}

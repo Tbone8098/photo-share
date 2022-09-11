@@ -1,0 +1,32 @@
+<div class="border-b-4 border-secondary pb-5">
+    <p class="text-center text-2xl font-bold">Add Member</p>
+    <form action="/album/{{ album.id }}/add_member" method="post">
+        <div class="mb-3 flex flex-col">
+            <label class="text-xs text-center" for="email">Email</label>
+            <input type="text" name="email" id="email">
+        </div>
+        <button class="btn-accent">Add Email</button>
+    </form>
+</div>
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for member in album.all_members %}
+            {% if member.id != session['uuid'] %}
+            <tr>
+                <td>{{ member.fullname }}</td>
+                <td>
+                    <a class="btn btn-secondary" href="">Remove</a>
+                </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

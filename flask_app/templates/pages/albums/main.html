@@ -1,0 +1,51 @@
+{% extends 'main.html' %}
+
+{% block main_content %}
+<div class="grid grid-cols-12 h-screen">
+    <div class="col-span-9">
+        <div class="flex justify-center items-center h-full gap-3">
+            {% for album in all_albums %}
+                <div class="relative group shadow rounded-lg group">
+                    <div class="w-64 h-64 flex justify-center items-center bg-secondary rounded-lg shadow">
+                        <div class="relative">
+                            <img class="rounded-lg object-cover h-64 w-64" style="object-position: {{album.cover_x}}% {{album.cover_y}}%;" src="{{ album.cover_url }}" alt="album cover">
+                            <div class="absolute bottom-5 w-full grid grid-cols-12">
+                                <div class="text-accent bg-secondary border border-accent col-span-10 col-start-2 rounded shadow">
+                                    <p class="text-center w-full">{{ album.name }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden group-hover:flex justify-center absolute top-0 left-0 w-full h-full bg-black/75 rounded-lg shadow">
+                        {% if album.creator_id == session['uuid'] %}
+                        <div class="mt-5">
+                            <a href="/album/{{album.id}}" class="btn btn-accent">Edit</a>
+                            <button class="btn-danger btn-modal" modal-id="delete_modal_{{ album.id }}">Delete</button>
+                        </div>
+                        {% else %}
+                        <div class="mt-5">
+                            <a href="/album/{{album.id}}" class="btn btn-accent">View</a>
+                            <button class="btn-danger btn-modal" modal-id="delete_modal_{{ album.id }}">Delete</button>
+                        </div>
+                        {% endif %}
+                        <div class="absolute bottom-5 w-full grid grid-cols-12">
+                            <div class="text-accent bg-secondary border border-accent col-span-10 col-start-2 rounded shadow">
+                                <p class="text-center w-full">{{ album.name }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="col-span-3 bg-primary border-l-8 border-secondary">
+        {% include 'components/forms/album_form.html' %}
+    </div>
+</div>
+{% endblock main_content %}
+
+{% block modals %}
+    {% for album in all_albums %}
+        {{ modal(title=album.name, content='components/album_delete', id='delete_modal_'+album.id|string, obj=album) }}
+    {% endfor %}
+{% endblock modals %}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=IM+Fell+French+Canon:ital@0;1&family=IM+Fell+Great+Primer+SC&display=swap"
+        rel="stylesheet">
+
+    <!-- tailwindcss -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% include 'components/tailwindcss.html' %}
+
+    <!-- css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/modal.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block css %}
+
+    {% endblock css %}
+
+    <title>Photo Sharing is caring</title>
+</head>
+
+<body>
+    {% block content %}
+
+    {% endblock content %}
+
+    <!-- macros -->
+    {% macro modal(content, id, title=None, obj=None) %}
+    <div class="modal__wrapper hidden" id="{{id}}">
+        <div class="modal__container h-full">
+            {% if title != None %}
+            <div class="modal__title">
+                <h1 class="text-2xl">{{ title }}</h1>
+                <span class="modal-close-btn cursor-pointer">X</span>
+            </div>
+            {% endif %}
+            <div class="modal__content flex flex-col items-center justify-center h-full">
+                {% include content+'.html' %}
+            </div>
+        </div>
+    </div>
+    {% endmacro %}
+
+    {% block modals %}
+
+    {% endblock modals %}
+
+    <!-- js -->
+    <script src="{{ url_for('static', filename='js/modal.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    {% block js %}
+
+    {% endblock js %}
+</body>
+
+</html>

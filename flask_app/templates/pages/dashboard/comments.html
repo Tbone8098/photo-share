@@ -1,0 +1,31 @@
+<div class="flex flex-col mt-auto h-screen overflow-auto ">
+    <div class="m-5 flex flex-col gap-3 h-2/3 overflow-auto">
+        {% for indx in range(8) %}
+        <div class="bg-white p-5 rounded shadow flex flex-col">
+            <div class="flex justify-between font-bold">
+                <p>Kendal Thibault</p>
+                <p>Dec 21 2022</p>
+            </div>
+            <div>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Est iusto commodi minima illo? Corporis, dolorem laudantium. Sunt similique recusandae nemo enim consequuntur quod, suscipit illum?
+            </div>
+            <div class="self-end">
+                <img src="{{ url_for('static', filename='img/icons/thumbs_up.png') }}" alt="thumbs up">
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="border-t-8 border-secondary mt-auto mb-0 bg-primary">
+        <div class="m-5">
+            <form action="" method="post">
+                <div class="mb-3 flex flex-col gap-3">
+                    <label class="text-xs text-center" for="content">Comment Content</label>
+                    <textarea name="content" id="content" cols="30" rows="10"></textarea>
+                </div>
+                <div class="mb-3 w-full">
+                    <button class="btn-secondary w-full">Post</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+.modal__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(0, 0, 0, 0.608);
+}
+
+.modal__container {
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+
+    min-width: 50%;
+    width: fit-content;
+    max-width: 90%;
+    min-height: 70%;
+    max-height: 90%;
+
+    overflow: auto;
+
+    border-radius: 0.5em;
+    background-color: white;
+}
+
+.modal__title {
+    display: flex;
+    justify-content: space-between;
+}

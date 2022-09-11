@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="flex flex-between w-full md:grid md:grid-cols-12 bg-white sticky py-5 top-0 duration-300" id="navbar">
+    <div class="col-span-2 hidden md:block"></div>
+    <div class="flex w-full md:col-span-8 mx-5">
+        <div class="flex justify-between w-full">
+            <p class="font-my-heading text-4xl text-primary invisible w-full" id="nav_title">Close the gap</p>
+            <div class="flex w-full justify-end items-center gap-3">
+                {% if session['uuid'] %}
+                <a class="btn btn-accent text-black p-0" href="/dashboard">Your Dashboard</a>
+                {% else %}
+                <button class="btn-accent text-black btn-modal" modal-id="modal_login">Login Or Register</button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-span-2 hidden md:block"></div>
+</div>
+<div class="h-screen bg-gradient-to-b via-white from-white to-primary">
+    <div class="grid grid-cols-12 ">
+        <div class="col-span-2"></div>
+        <div class="col-span-8 mt-5">
+            <div class="flex flex-col items-center my-5">
+                <h1 class="text-6xl text-center mt-10">Close The Gap</h1>
+                <img class="md:w-9/12 my-5 rounded shadow p-7 bg-secondary" src="{{ url_for('static', filename='img/index_img.jpg') }}"
+                    alt="photo">
+                <p class="text-xl">Pictures in the hands that matter most</p>
+                <div class="mt-5">
+                    {% if session['uuid'] %}
+                    <a class="btn btn-accent text-black p-0" href="/dashboard">Your Dashboard</a>
+                    {% else %}
+                    <button class="btn-accent uppercase btn-modal" modal-id="modal_login">Come and join us</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="col-span-2"></div>
+    </div>
+</div>
+<div class="bg-secondary py-8">
+    <p class="text-4xl text-white text-center font-my-heading">A far away life does not have to be an unconnected life
+    </p>
+</div>
+<div class="grid grid-cols-12 my-20">
+    <div class="col-span-2"></div>
+    <div class="col-span-8 flex flex-wrap gap-3 justify-evenly">
+        <div class="w-64">
+            <div class="h-44 w-64 border bg-primary rounded-lg flex flex-col justify-center items-center">
+                <p class="text-xl text-white my-2">Adding Pictures</p>
+                <img src="{{ url_for('static', filename='img/adding_photos.png') }}" alt="adding photos">
+            </div>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati atque dolor architecto doloremque
+                autem tempore sint quidem voluptate culpa ipsum?</p>
+        </div>
+        <div class="w-64">
+            <div class="h-44 w-64 border bg-primary rounded-lg flex flex-col justify-center items-center">
+                <p class="text-xl text-white my-2">Writing Comments</p>
+                <img src="{{ url_for('static', filename='img/comment_on_photos.png') }}" alt="adding photos">
+            </div>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati atque dolor architecto doloremque
+                autem tempore sint quidem voluptate culpa ipsum?</p>
+        </div>
+        <div class="w-64">
+            <div class="h-44 w-64 border bg-primary rounded-lg flex flex-col justify-center items-center">
+                <p class="text-xl text-white my-2">Sharing Memories</p>
+                <img src="{{ url_for('static', filename='img/icons/memories.png') }}" alt="adding photos">
+            </div>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati atque dolor architecto doloremque
+                autem tempore sint quidem voluptate culpa ipsum?</p>
+        </div>
+    </div>
+    <div class="col-span-2"></div>
+</div>
+<div class="grid grid-cols-12 mt-5 bg-secondary h-screen">
+    <div class="col-span-2"></div>
+    <div
+        class="col-span-8 flex flex-col h-full justify-center items-center md:grid md:grid-cols-2 place-items-center gap-5">
+        <div class="bg-white p-7">
+            <img src="{{ url_for('static', filename='img/photo_wall.jpg') }}" alt="">
+        </div>
+        <div class="text-white text-4xl text-center font-my-heading">
+            <p class="text-primary text-6xl">Close the Gap</p>
+            <p>Keeps the people you care about close no matter the distance</p>
+        </div>
+    </div>
+    <div class="col-span-2"></div>
+</div>
+{% endblock content %}
+
+{% block modals %}
+    {{ modal(title='Close the Gap', content='components/forms/user_login', id='modal_login') }}
+{% endblock modals %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/loginReg.js') }}"></script>
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+{% endblock js %}

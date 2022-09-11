@@ -1,0 +1,46 @@
+<div class="grid grid-cols-12 w-full h-full gap-3">
+    <div class="col-span-8 h-full p-5">
+        <img class="h-5/6 object-cover rounded-lg shadow" src="{{ obj.url }}" alt="photo">
+        <div class="flex justify-between my-5">
+            <p>{{ obj.description }}</p>
+            <a class="btn btn-secondary" href="">👍</a>
+        </div>
+    </div>
+    <div class="col-span-4 p-3 overflow-hidden h-full">
+        <div class="flex flex-col gap-3 h-full">
+            <div class="border-b-4 border-secondary pb-5">
+                <h2 class="text-4xl font-bold text-center">Comments</h2>
+                <form class="flex flex-col gap-3 comment-form">
+                    <input type="hidden" name="photo_id" id="photo_id" value="{{ obj.id }}">
+                    <div class="flex flex-col">
+                        <label class="text-center text-xs" for="content"></label>
+                        <textarea name="content" id="content" cols="30" rows="5"
+                            placeholder="255 characters max"></textarea>
+                        <span class="err_content_{{ obj.id }}" ></span>
+                    </div>
+                    <button class="btn-primary">Comment</button>
+                </form>
+            </div>
+            <div class="h-full overflow-scroll flex flex-col gap-3" id="comment-section-{{obj.id}}">
+                {% for comment in obj.all_comments | reverse %}
+                <div class="border shadow p-5 rounded-lg">
+                    <div class="flex justify-between font-bold">
+                        <span>{{ comment.maker.fullname }}</span>
+                        <span>{{ comment.updated_at }}</span>
+                    </div>
+                    <p>{{ comment.content }}</p>
+                    {% if comment.user_id == session['uuid'] %}
+                    <div class="my-1 flex justify-end">
+                        <button class="btn btn-danger comment-delete-btn" comment-id="{{ comment.id }}" >Delete</button>
+                    </div>
+                    {% else %}
+                    <div class="flex justify-end">
+                        <a class="btn btn-secondary" href="">👍</a>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

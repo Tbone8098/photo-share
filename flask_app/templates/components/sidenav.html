@@ -1,0 +1,40 @@
+{% set page = request.path %}
+<div class="h-screen bg-secondary text-white flex flex-col mt-auto items-center w-full">
+    <div class="mt-0 flex flex-col items-center gap-3">
+        <a class="hover:text-primary" href="/"><h2>Close the Gap</h2></a>
+        <a href="/user/settings"><img src="{{ url_for('static', filename='img/icons/user.png') }}" alt="user icon"></a>
+    </div>
+    <div class="mt-auto">
+        <div class="flex flex-col gap-3">
+            {% if not page == '/dashboard' %}
+            <a href="/dashboard">
+                <div class="sidenav-btn {{ 'bg-accent' if page == '/dashboard' else 'bg-white' }}">
+                    <img src="{{ url_for('static', filename='img/icons/home.png') }}" alt="home">
+                </div>
+            </a>
+            {% endif %}
+            <a href="">
+                <div class="sidenav-btn {{ 'bg-accent' if page == '/' else 'bg-white' }}">
+                    <img src="{{ url_for('static', filename='img/icons/friends.png') }}" alt="home">
+                </div>
+            </a>
+            <a href="">
+                <div class="sidenav-btn {{ 'bg-accent' if page == '/' else 'bg-white' }}">
+                    <img src="{{ url_for('static', filename='img/icons/photos.png') }}" alt="home">
+                </div>
+            </a>
+            <a href="/albums">
+                <div class="sidenav-btn {{ 'bg-accent' if page == '/albums' else 'bg-white' }}">
+                    <img src="{{ url_for('static', filename='img/icons/memories.png') }}" alt="home">
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="mt-auto mb-5">
+        <a href="/user/logout">
+            <div class="sidenav-btn bg-white">
+                <img src="{{ url_for('static', filename='img/icons/exit.png') }}" alt="exit">
+            </div>
+        </a>
+    </div>
+</div>

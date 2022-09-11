@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="grid grid-cols-12">
+    <div class="col-span-1">
+        {% include 'components/sidenav.html' %}
+    </div>
+    <div class="col-span-11">
+        {% block main_content %}
+            
+        {% endblock main_content %}
+    </div>
+</div>
+{% endblock content %}

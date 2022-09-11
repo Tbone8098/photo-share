@@ -1,0 +1,65 @@
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'primary': '#2EC4B6',
+                    'primary-light': '#7BE0D6',
+                    'secondary': '#011627',
+                    'secondary-light': '#0565B3',
+                    'accent': '#FF9F1C',
+                    'accent-light': '#FFC370',
+                    'danger': '#E71D36',
+                    'danger-light': '#ED5A6B',
+                },
+                fontFamily: {
+                    'my-heading' : 'IM Fell Great Primer SC',
+                    'my-paragraph' : 'IM Fell French Canon',
+                }
+            }
+        }
+    }
+</script>
+<style type="text/tailwindcss">
+    @layer utilities {
+        body {
+            /* @apply font-my-paragraph; */
+        }
+        h1,h2,h3 {
+            @apply font-my-heading;
+        }
+        button, .btn {
+            @apply rounded-lg shadow px-3 py-1 duration-300;
+        }
+        .btn-primary {
+            @apply bg-primary-light hover:bg-primary hover:text-white;
+        }
+        .btn-secondary {
+            @apply bg-secondary-light hover:bg-secondary text-white;
+        }
+        .btn-danger {
+            @apply bg-danger-light hover:bg-danger hover:text-white;
+        }
+        .btn-accent {
+            @apply bg-accent-light hover:bg-accent hover:text-white;
+        }
+        .sidenav-btn {
+            @apply px-5 py-2 rounded shadow hover:bg-secondary-light duration-300;
+        }
+        input, textarea, .input {
+            @apply border rounded shadow text-center;
+        }
+        table {
+            @apply w-full border text-center;
+        }
+        table td {
+            @apply h-14 bg-white border-b border-black;
+        }
+        table thead tr{
+            @apply h-14 w-full border bg-accent;
+        }
+        .btn-modal {
+            @apply cursor-pointer hover:shadow-lg hover:shadow-secondary;
+        }
+    }
+</style>

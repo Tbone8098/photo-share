@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+
+
+{% block main_content %}
+<div class="grid grid-cols-12 h-full">
+    <div class="col-span-8 items-center flex flex-col">
+        <div class="9/12 h-full flex justify-center items-center">
+            {% include 'components/photo_carousel.html' %}
+        </div>
+    </div>
+    <div class="col-span-4 bg-primary border-l-8 border-secondary">
+        {% include 'pages/dashboard/comments.html' %}
+    </div>
+</div>
+{% endblock main_content %}
